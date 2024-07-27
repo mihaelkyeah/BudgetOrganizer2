@@ -1,0 +1,14 @@
+{
+    "appName": "Budget Organizer 2: Budget Manager",
+    "earning": "Earning",
+    "spending": "Spending",
+    "new": "New",
+    "view": "View",
+    "edit": "Edit",
+    "delete": "Delete",
+    "name": "Name",
+    "details": "Details",
+    "value": "Value",
+    "aboutLink": "About...",
+    "aboutText": "Budget Organizer for productivity. Programmed by Francisco Hernández in Vanilla PHP, HTML, CSS and JavaScript."
+}

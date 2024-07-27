@@ -1,0 +1,14 @@
+{
+    "appName": "Budget Organizer 2: Gestor de Presupuesto",
+    "earning": "Ingreso",
+    "spending": "Egreso",
+    "new": "Nuevo",
+    "view": "Ver",
+    "edit": "Editar",
+    "delete": "Borrar",
+    "name": "Nombre",
+    "details": "Detalle",
+    "value": "Valor",
+    "aboutLink": "Acerca De...",
+    "aboutText": "Gestor de presupuesto hecho para productividad. Programado por Francisco Hernández en PHP vainilla, HTML, CSS y JavaScript."
+}
