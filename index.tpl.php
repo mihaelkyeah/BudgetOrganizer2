@@ -8,6 +8,8 @@ require('controllers/IngresoController.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/libs/tailwindcss.3.4.5.js"></script>
+    <link rel="stylesheet" href="css/libs/flowbite.min.css">
+    <script src="js/libs/flowbite.min.js"></script>
     <title>Budget Organizer 2: Gestor de Presupuesto</title>
 </head>
 <body class="bg-yellow-100">
@@ -16,7 +18,7 @@ require('controllers/IngresoController.php');
         <h2 class="text-2xl font-bold text-center mb-2">Balance</h2>
         <div class="flex flex-row justify-center">
             <div class="bg-green-200 p-4 text-3xl font-bold rounded rounded-lg text-center">
-                $<input type="number" value="0.00" id="balance" class="bg-transparent w-[15ch] text-center box-content"></input>
+                $<input disabled type="number" value="0.00" id="balance" class="bg-transparent w-[15ch] text-center text-3xl border-0 m-0 p-0 box-content"></input>
             </div>
         </div>
     </div>
@@ -35,7 +37,7 @@ require('controllers/IngresoController.php');
                             <div class="flex flex-col w-[49%]">
                                 <label for="ingreso-valor" data-key="value" class="text-xs font-semibold">Valor</label>
                                 <div class="flex flex-row justify-around items-center rounded border border-slate-600/25 pl-1 w-full font-semibold">
-                                    $<input type="number" min="0" step="0.01" id="ingreso-valor" name="ingreso-valor" value="0.00" class="py-1"/>
+                                    $&nbsp;<input type="number" min="0" step="0.01" id="ingreso-valor" name="ingreso-valor" value="0.00" class="py-1 pl-1 pr-0 border-0 rounded w-[calc(100%-1ch)]"/>
                                 </div>
                             </div>
                             <div class="flex flex-col w-full mt-1">
@@ -72,7 +74,7 @@ require('controllers/IngresoController.php');
                             <div class="flex flex-col w-[49%]">
                                 <label for="egreso-valor" data-key="value" class="text-xs font-semibold">Valor</label>
                                 <div class="flex flex-row justify-around items-center rounded border border-slate-600/25 pl-1 w-full font-semibold">
-                                    $<input type="number" min="0" step="0.01" id="egreso-valor" name="egreso-valor" value="0.00" class="py-1"/>
+                                    $&nbsp;<input type="number" min="0" step="0.01" id="egreso-valor" name="egreso-valor" value="0.00" class="py-1 pl-1 pr-0 border-0 rounded w-[calc(100%-1ch)]"/>
                                 </div>
                             </div>
                             <div class="flex flex-col w-full mt-1">
@@ -96,5 +98,31 @@ require('controllers/IngresoController.php');
             </table>
         </div>
     </div>
+    <?php if(isset($msgType) && !empty($msgType) && $msgType !== null): ?>
+        <div id="pseudo-modal-overlay" class="absolute top-0 left-0 w-full h-full z-500 bg-slate-800/50"></div>
+        <script>
+            window.addEventListener('load', pseudoMsgModal);
+            async function pseudoMsgModal() {
+                let msgType = '<?= $msgType ?>';
+                let emoji = '';
+                switch(msgType) {
+                    case 'info':
+                        emoji = '💬';
+                        break;
+                    case 'danger':
+                        emoji = '❗';
+                        break;
+                    case 'success':
+                        emoji = '✅';
+                        break;
+                    case 'warning':
+                        emoji = '⚠';
+                        break;
+                }
+                await alert(emoji + ' <?= $msgText ?>');
+                document.getElementById('pseudo-modal-overlay').remove();
+            }
+        </script>
+    <?php endif ?>
 </body>
 </html>
